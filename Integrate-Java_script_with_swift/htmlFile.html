@@ -13,26 +13,26 @@
             input:checked + .slider:before { -webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px); }
             .slider.round { border-radius: 34px; }
             .slider.round:before { border-radius: 50%; }
-        </style>
+            </style>
     </head>
     <body>
         <h2 id="value">Toggle Switch is off</h2>
         <label class="switch">
             <input type="checkbox" name="myCheckbox">
-            <span class="slider round"></span>
-        </label>
+                <span class="slider round"></span>
+                </label>
         
         <script>
             var _selector = document.querySelector('input[name=myCheckbox]');
             _selector.addEventListener('change', function(event) {
-                var message = (_selector.checked) ? "Toggle Switch is on" : "Toggle Switch is off";
-                if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.toggleMessageHandler) {
-                    window.webkit.messageHandlers.toggleMessageHandler.postMessage({
-                        "message": message
-                    });
-                }
-            });
-        </script>
+                                       var message = (_selector.checked) ? "Toggle Switch is on" : "Toggle Switch is off";
+                                       if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.toggleMessageHandler) {
+                                       window.webkit.messageHandlers.toggleMessageHandler.postMessage({
+                                                                                                      "message": message
+                                                                                                      });
+                                       }
+                                       });
+            </script>
     </body>
 </html>
 

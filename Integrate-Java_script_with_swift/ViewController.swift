@@ -32,8 +32,8 @@ class ViewController: UIViewController , WKUIDelegate , WKScriptMessageHandler  
         guard let dict = message.body as? [String : AnyObject] else {
             return
         }
-
-        print(dict)
+     let data = dict["message"]
+        print(data)
         
     }
     
