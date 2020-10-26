@@ -7,14 +7,36 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController , WKUIDelegate , WKScriptMessageHandler  {
+    
+    
 
+    @IBOutlet weak var webKitView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
+        if let url = Bundle.main.url(forResource: "htmlFile", withExtension: "html") {
+            webKitView.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
+        }
+        
+        let contentController = self.webKitView.configuration.userContentController
+        contentController.add(self, name: "toggleMessageHandler")
     }
 
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        
+        guard let dict = message.body as? [String : AnyObject] else {
+            return
+        }
+
+        print(dict)
+        
+    }
+    
 
 }
 
